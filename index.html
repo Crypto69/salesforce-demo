@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuno Matos &amp; ANZ — Agentforce Sales Brief</title>
+<style>
+  :root{
+    --ink:#10243e;--ink-soft:#3a4a5e;--muted:#6b7a8d;
+    --line:#e3e8ef;--bg:#f6f8fb;--card:#ffffff;
+    --anz:#005aaa;--anz-dark:#003a73;--accent:#00a1e0;
+    --pos:#1a7f5a;--pos-bg:#e7f5ee;--neg:#b4452f;--neg-bg:#fbece8;
+    --gold:#c8941f;--gold-bg:#fbf3df;
+    --shadow:0 1px 3px rgba(16,36,62,.06),0 8px 24px rgba(16,36,62,.06);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px;
+  }
+  a{color:var(--anz);}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px;}
+
+  /* Hero */
+  header.hero{
+    background:linear-gradient(135deg,var(--anz-dark) 0%,var(--anz) 60%,var(--accent) 130%);
+    color:#fff;padding:54px 0 46px;
+  }
+  .hero .wrap{display:flex;flex-direction:column;gap:18px;}
+  .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#bfe1f6;font-weight:600;}
+  .hero h1{font-size:38px;line-height:1.15;margin:0;font-weight:700;letter-spacing:-.02em;}
+  .hero .sub{font-size:18px;color:#dcefff;max-width:640px;margin:0;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+    padding:6px 13px;border-radius:999px;font-size:13px;font-weight:500;backdrop-filter:blur(4px);}
+
+  /* TL;DR callout */
+  .tldr{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
+    border-radius:12px;padding:20px 24px;margin:-28px auto 0;max-width:920px;
+    box-shadow:var(--shadow);position:relative;}
+  .tldr h2{margin:0 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);}
+  .tldr p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  .tldr strong{color:var(--ink);}
+
+  /* Nav */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(246,248,251,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:30px;}
+  nav.toc .wrap{display:flex;gap:6px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px;}
+  nav.toc a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+    padding:7px 14px;border-radius:8px;transition:.15s;}
+  nav.toc a:hover{background:#e8eef6;color:var(--anz-dark);}
+
+  /* Sections */
+  section{padding:46px 0 14px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+  .sec-num{flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:var(--anz);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;}
+  h2.sec-title{font-size:27px;margin:0;letter-spacing:-.01em;}
+  .sec-sub{color:var(--muted);margin:2px 0 26px 52px;font-size:15px;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:24px 26px;margin-bottom:18px;box-shadow:var(--shadow);}
+  .card h3{margin:0 0 12px;font-size:18px;color:var(--anz-dark);}
+  .card p{margin:0 0 12px;color:var(--ink-soft);}
+  .card p:last-child{margin-bottom:0;}
+
+  /* fact grid */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:4px 0 4px;}
+  .fact{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+  .fact .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;}
+  .fact .v{font-size:15px;font-weight:600;color:var(--ink);margin-top:3px;}
+
+  /* timeline */
+  .timeline{list-style:none;margin:0;padding:0;}
+  .timeline li{position:relative;padding:0 0 20px 28px;border-left:2px solid var(--line);}
+  .timeline li:last-child{border-left-color:transparent;padding-bottom:0;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:3px;width:12px;height:12px;
+    border-radius:50%;background:var(--anz);border:2px solid #fff;box-shadow:0 0 0 2px var(--anz);}
+  .timeline .yr{font-weight:700;color:var(--anz-dark);font-size:14px;}
+  .timeline .ev{color:var(--ink-soft);font-size:15px;}
+
+  /* priority list */
+  .prio{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line);}
+  .prio:last-child{border-bottom:none;}
+  .prio .ic{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:#e8f1fb;color:var(--anz);
+    display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .prio .body h4{margin:0 0 3px;font-size:16px;}
+  .prio .body p{margin:0;color:var(--ink-soft);font-size:14.5px;}
+
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:6px;
+    text-transform:uppercase;letter-spacing:.04em;vertical-align:middle;margin-left:6px;}
+  .tag.pain{background:var(--neg-bg);color:var(--neg);}
+  .tag.priority{background:#e8f1fb;color:var(--anz);}
+
+  /* sentiment two-col */
+  .senti{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .senti .col{border-radius:12px;padding:20px 22px;border:1px solid var(--line);}
+  .senti .pos{background:var(--pos-bg);border-color:#c7e6d6;}
+  .senti .neg{background:var(--neg-bg);border-color:#f1d2c9;}
+  .senti h3{margin:0 0 12px;font-size:17px;display:flex;align-items:center;gap:8px;}
+  .senti .pos h3{color:var(--pos);}
+  .senti .neg h3{color:var(--neg);}
+  .senti ul{margin:0;padding-left:18px;}
+  .senti li{margin-bottom:10px;font-size:14.5px;color:var(--ink-soft);}
+  .senti li strong{color:var(--ink);}
+
+  /* alignment table */
+  table.align{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:4px;}
+  table.align th,table.align td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  table.align th{background:var(--anz-dark);color:#fff;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.04em;}
+  table.align th:first-child{border-top-left-radius:10px;}
+  table.align th:last-child{border-top-left-radius:0;border-top-right-radius:10px;}
+  table.align tr:last-child td{border-bottom:none;}
+  table.align td:first-child{font-weight:600;color:var(--anz-dark);width:32%;}
+  table.align tbody tr:nth-child(even){background:var(--bg);}
+
+  .pull{background:linear-gradient(135deg,#f0f6fc,#e8f1fb);border:1px solid #d4e6f7;border-radius:12px;
+    padding:20px 24px;margin:18px 0;font-size:17px;font-style:italic;color:var(--anz-dark);}
+  .pull .who{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:8px;font-weight:600;}
+
+  .talk{counter-reset:t;list-style:none;padding:0;margin:0;}
+  .talk li{position:relative;padding:14px 16px 14px 52px;background:var(--card);border:1px solid var(--line);
+    border-radius:10px;margin-bottom:10px;color:var(--ink-soft);font-size:15px;box-shadow:var(--shadow);}
+  .talk li::before{counter-increment:t;content:counter(t);position:absolute;left:14px;top:13px;
+    width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;}
+  .talk li strong{color:var(--ink);}
+
+  footer{margin-top:50px;background:var(--anz-dark);color:#cfe3f5;padding:30px 0;font-size:13px;}
+  footer .wrap{display:flex;flex-direction:column;gap:8px;}
+  footer a{color:#9fd2f5;}
+  .sources{font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px;}
+  .disclaimer{font-size:12px;color:#7fa6c9;}
+
+  @media(max-width:680px){
+    .hero h1{font-size:29px;}
+    .senti{grid-template-columns:1fr;}
+    table.align td:first-child{width:auto;}
+    .sec-sub{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Account Brief · Confidential · Prepared 18 June 2026</span>
+    <h1>Nuno Matos &amp; ANZ Banking Group</h1>
+    <p class="sub">CEO background, priorities &amp; pain points, and how Salesforce Agentforce maps to his agenda.</p>
+    <div class="hero-meta">
+      <span class="chip">🎯 Target: Nuno Matos, Group CEO</span>
+      <span class="chip">🏦 ANZ — Australia's 4th-largest bank</span>
+      <span class="chip">🤖 Opportunity: Agentforce expansion</span>
+    </div>
+  </div>
+</header>
+
+<div class="tldr">
+  <h2>⚡ The one thing to remember</h2>
+  <p><strong>This is a land-and-expand, not a cold pitch.</strong> ANZ is <strong>already running Agentforce</strong> for business bankers and has just appointed its <strong>first Chief Data &amp; AI Officer</strong>. Matos is a cost-and-control turnaround CEO operating under an APRA enforceable undertaking — so lead with <strong>productivity, governance and audit</strong>, not innovation hype.</p>
+</div>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#bio">1 · Bio &amp; Background</a>
+    <a href="#priorities">2 · Priorities &amp; Pain Points</a>
+    <a href="#agentforce">3 · Agentforce &amp; Alignment</a>
+  </div>
+</nav>
+
+<!-- ===================== SECTION 1 ===================== -->
+<section id="bio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <h2 class="sec-title">Biography &amp; Background</h2>
+    </div>
+    <p class="sec-sub">Who Nuno Matos is, how he got here, and how he leads.</p>
+
+    <div class="card">
+      <div class="facts">
+        <div class="fact"><div class="k">Role</div><div class="v">Group CEO, ANZ</div></div>
+        <div class="fact"><div class="k">Started at ANZ</div><div class="v">July 2025</div></div>
+        <div class="fact"><div class="k">Born</div><div class="v">Portugal, 1968</div></div>
+        <div class="fact"><div class="k">Experience</div><div class="v">30+ years banking</div></div>
+        <div class="fact"><div class="k">Markets worked</div><div class="v">9 countries</div></div>
+        <div class="fact"><div class="k">Predecessor</div><div class="v">Shayne Elliott (9 yrs)</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Profile</h3>
+      <p>Nuno Matos is a Portuguese-born career banker who took over as ANZ Group CEO on 3 July 2025, succeeding nine-year incumbent Shayne Elliott. He describes his multicultural household — roots in India, Mozambique, Portugal and Peru — as "the United Nations at home," and holds a Business Administration degree and an MBA in Finance from Universidade Católica Portuguesa.</p>
+      <p>He began his career as an analyst in the banking supervision department of <strong>Banco de Portugal</strong> — meaning he started his career on the <em>regulator's</em> side of the table, a useful detail given ANZ's current regulatory challenges. He then spent <strong>21 years at Santander</strong> across Portugal, Spain and France (ending as Global Head of Consumer), followed by <strong>~9 years at HSBC</strong>, where he ran HSBC Bank plc / HSBC Europe, was CEO of Mexico and Regional Head of Retail Banking in Latin America, and finally CEO of Wealth &amp; Personal Banking globally.</p>
+      <p>He is a retail/consumer and wealth banking specialist by pedigree — an operator known for transformation and turnarounds rather than investment banking. In late 2025 he was also named chair of the Australian Banking Association council, signalling fast establishment as an industry voice.</p>
+    </div>
+
+    <div class="card">
+      <h3>Career timeline</h3>
+      <ul class="timeline">
+        <li><span class="yr">Early career</span> — <span class="ev">Analyst, banking supervision, Banco de Portugal (the regulator).</span></li>
+        <li><span class="yr">~1994–2015 (21 yrs)</span> — <span class="ev">Santander: rose through Portugal, Spain &amp; France to Global Head of Consumer.</span></li>
+        <li><span class="yr">2015–2025 (~9 yrs)</span> — <span class="ev">HSBC: CEO Mexico → CEO HSBC Bank plc / Europe → CEO Wealth &amp; Personal Banking (global).</span></li>
+        <li><span class="yr">Jul 2025</span> — <span class="ev">Appointed Group CEO of ANZ.</span></li>
+        <li><span class="yr">Oct 2025</span> — <span class="ev">Launches "ANZ 2030" strategy; announces 3,500 job cuts.</span></li>
+        <li><span class="yr">2025–26</span> — <span class="ev">Named chair of the Australian Banking Association council.</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Leadership style — read the room before you pitch</h3>
+      <p><strong>Decisive, blunt, cost-disciplined.</strong> Within months he announced 3,500 redundancies plus ~1,000 fewer contractors, warned staff of more "ugly" changes ahead, mandated office attendance and trimmed pay. His mantra is <strong>"doing less"</strong> — concentrate on fewer things and execute them well.</p>
+      <p><strong>Leads by example on accountability.</strong> He forwent his own ~A$975k short-term bonus over historic misconduct that predated him, "to set the example." He publicly called the firing of staff by automated email "indefensible" — he cares about how change is executed, not just the numbers.</p>
+      <p><strong>Rebuilt the bench with people he trusts.</strong> He recruited senior leaders directly from his former employers, Santander and HSBC — including ANZ's first Chief Data &amp; AI Officer, Kai Yang (ex-HSBC). Relationships and prior track record matter to him.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 2 ===================== -->
+<section id="priorities">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">2</div>
+      <h2 class="sec-title">Priorities &amp; Pain Points at ANZ</h2>
+    </div>
+    <p class="sec-sub">What he's discovered since joining — and what keeps him up at night.</p>
+
+    <div class="pull">
+      "Doing less is key to getting back on track… the things we do, we need to do well."
+      <span class="who">— Nuno Matos, on his turnaround philosophy</span>
+    </div>
+
+    <div class="card">
+      <h3>The "ANZ 2030" strategy &amp; five immediate priorities</h3>
+      <p>Matos reset ANZ's direction with an "ANZ 2030" strategy. Phase one (FY26–FY27) is explicitly about <strong>"getting the basics right"</strong>: grow revenue in line with the market while outperforming on productivity. His five immediate priorities:</p>
+      <div class="prio"><div class="ic">👥</div><div class="body"><h4>Embed the new leadership team</h4><p>A largely refreshed executive bench, several hired from Santander &amp; HSBC.</p></div></div>
+      <div class="prio"><div class="ic">🔗</div><div class="body"><h4>Accelerate Suncorp Bank integration</h4><p>Full integration brought forward to 30 June 2027.</p></div></div>
+      <div class="prio"><div class="ic">📱</div><div class="body"><h4>Deliver ANZ Plus to all customers</h4><p>Roll out to all ~8m retail &amp; small-business customers by Sept 2027 — three years early.</p></div></div>
+      <div class="prio"><div class="ic">✂️</div><div class="body"><h4>Simplify &amp; remove duplication</h4><p>Collapse three frontends / two cores into one frontend + one core.</p></div></div>
+      <div class="prio"><div class="ic">🛑</div><div class="body"><h4>Stop off-strategy initiatives</h4><p>Kill projects that don't align — the "doing less" doctrine in action.</p></div></div>
+    </div>
+
+    <div class="card">
+      <h3>Pain points he's confronting</h3>
+
+      <div class="prio">
+        <div class="ic">⚖️</div>
+        <div class="body">
+          <h4>Regulatory &amp; non-financial risk <span class="tag pain">#1 pain</span></h4>
+          <p>ANZ operates under an <strong>APRA enforceable undertaking</strong>; APRA lifted its capital add-on from $750m to <strong>$1bn</strong> over risk-culture weaknesses. ANZ also paid a record <strong>A$240m ASIC settlement</strong> for "widespread misconduct" (a flawed government bond deal, charging deceased customers). Matos calls getting non-financial risk management right one of the most important things he must fix.</p>
+        </div>
+      </div>
+
+      <div class="prio">
+        <div class="ic">💸</div>
+        <div class="body">
+          <h4>Cost &amp; productivity <span class="tag pain">pain</span></h4>
+          <p>FY25 cash profit fell 14% to ~A$5.79bn. Target: <strong>~3% total cost reduction in FY26</strong> and ~A$800m gross savings, funded largely by 3,500 redundancies + 1,000 fewer contractors. He needs efficiency gains that don't add risk.</p>
+        </div>
+      </div>
+
+      <div class="prio">
+        <div class="ic">🧩</div>
+        <div class="body">
+          <h4>Technology fragmentation <span class="tag pain">pain</span></h4>
+          <p>ANZ runs <strong>three digital frontends, three middleware platforms and two core banking systems</strong>. He backs the ANZ Plus tech stack but called its delivery "inefficient," put the program under review, and triggered senior ANZ Plus exits. Goal: one frontend (ANZ Plus) + one core by Sept 2027.</p>
+        </div>
+      </div>
+
+      <div class="prio">
+        <div class="ic">🔗</div>
+        <div class="body">
+          <h4>Suncorp integration risk <span class="tag pain">pain</span></h4>
+          <p>Integrating Suncorp Bank and migrating its customers by mid-2027 — 34% delivered by Mar 2026, targeting 57% by year-end. A complex, deadline-driven migration that must be "safe and secure."</p>
+        </div>
+      </div>
+
+      <div class="prio">
+        <div class="ic">😟</div>
+        <div class="body">
+          <h4>Culture &amp; morale <span class="tag pain">pain</span></h4>
+          <p>Deep cost-cutting has hit morale (staff venting on Reddit; reports of internal revolt over risk-team cuts). The tension: he <em>cannot</em> cut risk &amp; compliance staff without potentially breaching the APRA undertaking — so efficiency must come from tooling, not just headcount.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Where he's already betting on AI <span class="tag priority">opportunity signal</span></h3>
+      <p>Matos is explicitly tech-forward. ANZ appointed <strong>Kai Yang (ex-HSBC) as its first Chief Data &amp; AI Officer</strong> in April 2026 to lead the enterprise data/AI agenda <em>and strengthen governance and controls</em>. ANZ staff already use Microsoft Copilot and GitHub Copilot, and the bank is <strong>already rolling out AI agents for business bankers on Salesforce Agentforce</strong>. The appetite — and the platform — are in place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 3 ===================== -->
+<section id="agentforce">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">3</div>
+      <h2 class="sec-title">Agentforce — Market Sentiment &amp; Alignment</h2>
+    </div>
+    <p class="sec-sub">The honest market read, and how it maps to Matos's agenda.</p>
+
+    <div class="senti">
+      <div class="col pos">
+        <h3>👍 Positive sentiment</h3>
+        <ul>
+          <li><strong>Real banking proof points.</strong> Absa Bank runs Africa's first production-grade Agentforce agents and won a 2026 Celent Model Bank award; planning 10+ production agents.</li>
+          <li><strong>Hard ROI numbers.</strong> Salesforce cites &gt;$100M annualised savings across customers, 34% productivity gains, and a 60% lift in WhatsApp enquiry resolution.</li>
+          <li><strong>Customers are scaling, not just piloting.</strong> ~60% of Q4 FY26 Agentforce/Data 360 bookings came from existing-customer expansions.</li>
+          <li><strong>Purpose-built for regulated FS.</strong> Prebuilt Financial Services templates (onboarding, service, collections, advisory prep, lending) on the Einstein Trust Layer.</li>
+          <li><strong>Built-in governance.</strong> Embedded compliance controls + full audit trail on every agent action.</li>
+        </ul>
+      </div>
+      <div class="col neg">
+        <h3>👎 Negative / cautionary sentiment</h3>
+        <ul>
+          <li><strong>Hallucination ceiling in regulated industries.</strong> Open question whether autonomy can ever run unsupervised — e.g. an agent hallucinating a mortgage rate or exposing cross-household data.</li>
+          <li><strong>"Trust is the entire product."</strong> Critics warn ungoverned agents on core banking logic = gambling with reputation.</li>
+          <li><strong>Permissions &amp; agent sprawl.</strong> Bad permissions at scale could mass-modify records or rack up runaway API/credit costs ("4 ways to lose millions").</li>
+          <li><strong>Adoption slower than hyped.</strong> CRM stock down ~33% in 2026; BofA sees more losses on slow Agentforce uptake.</li>
+          <li><strong>Pricing friction.</strong> Shift to per-action Flex Credits (20 credits/action) draws cost-predictability concerns; r/salesforce admins vocal about complexity &amp; workload.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How Agentforce maps to Matos's priorities</h3>
+      <table class="align">
+        <thead><tr><th>His priority / pain</th><th>Agentforce angle to lead with</th></tr></thead>
+        <tbody>
+          <tr><td>Productivity &amp; ~3% cost cut</td><td>Agents deflect routine service &amp; banker-prep work — efficiency <em>without</em> cutting risk/compliance headcount.</td></tr>
+          <tr><td>Non-financial risk &amp; APRA undertaking</td><td>Lead with the Einstein Trust Layer, embedded compliance controls and full audit trails — turn AI into a governance story, not a risk.</td></tr>
+          <tr><td>Tech simplification (1 frontend / 1 core)</td><td>Agentforce as the unified service/agent layer over the consolidating ANZ Plus stack — fewer bespoke point solutions.</td></tr>
+          <tr><td>Suncorp migration by 2027</td><td>Agents to handle migration-driven customer queries &amp; servicing surge at scale during cutover.</td></tr>
+          <tr><td>ANZ Plus to 8m customers</td><td>Scale personalised digital service to the full retail base without linear headcount growth.</td></tr>
+          <tr><td>"Doing less" doctrine</td><td>Expand a platform ANZ already owns (existing Agentforce + new AI chief) rather than add a new vendor — fewer things, done well.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Recommended talk track for the meeting</h3>
+      <ol class="talk">
+        <li><strong>Open on governance, not AI.</strong> "We know non-financial risk and the APRA undertaking are your priority — so let's start with how agents stay auditable and compliant."</li>
+        <li><strong>Frame as expansion.</strong> You already run Agentforce for business bankers and have a new AI chief — this is scaling what works, the "doing less" way.</li>
+        <li><strong>Tie to the cost target.</strong> Position agents as the productivity lever that protects risk/compliance roles you can't cut.</li>
+        <li><strong>Bring a proof point.</strong> Reference Absa Bank — a comparable regulated bank already in production with measurable results.</li>
+        <li><strong>Pre-empt the objections.</strong> Have a clear answer on hallucination guardrails, permissions/agent sprawl, and Flex Credits cost predictability.</li>
+        <li><strong>Anchor to a 2027 milestone.</strong> Land a concrete agent use case inside the Suncorp / ANZ Plus consolidation roadmap.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="research-sources" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num" style="background:#1a7f5a;">✓</div>
+      <h2 class="sec-title">Research Sources</h2>
+    </div>
+    <p class="sec-sub">Combined coverage across all sources pulled for this brief.</p>
+    <pre style="background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:12px;
+      padding:22px 24px;overflow-x:auto;font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace;
+      font-size:14px;line-height:1.9;box-shadow:var(--shadow);white-space:pre;">✅ All agents reported back!
+├─ 🟠 Reddit: 33 threads │ 37,090 upvotes │ 5,168 comments
+├─ 🔵 X: 15 posts │ 492 likes │ 66 reposts
+├─ 🔴 YouTube: 8 videos │ 5/8 with transcripts
+├─ 🎵 TikTok: 18 videos │ 240,389 views │ 12,657 likes
+├─ 📸 Instagram: 2 reels │ 6,618 views │ 141 likes
+├─ 🟡 HN: 5 storys │ 34 points │ 4 comments
+├─ 🐙 GitHub: 8 items │ 14 comments
+└─ 🗣️ Top voices: @Benioff, @AviatoResearch, @fourweekmba, @FinancialReview, @AlNassrTribune, @Sailord_santos │ r/salesforce, r/artificial, r/AI_Agents, r/australia, r/AusFinance</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Salesforce × ANZ — Account Brief</strong> · Prepared 18 June 2026</div>
+    <div class="disclaimer">Internal sales-preparation document. Compiled from public reporting and social/market research (last-30-day window via /last30days plus web supplements). Figures are directional; verify before quoting externally.</div>
+    <div class="sources">
+      Key sources: ANZ Newsroom · Bloomberg · Reuters · Capital Brief · Business News Australia · iTnews · Banking Day · The Adviser · Computer Weekly · Cyber Daily · Fortune · CNBC · Salesforce &amp; Salesforce Ben · The Australian Financial Review · HSBC leadership bio · Reddit (r/salesforce, r/AusFinance, r/australia).
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
